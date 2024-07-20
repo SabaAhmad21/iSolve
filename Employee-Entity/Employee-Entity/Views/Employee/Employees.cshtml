@@ -1,0 +1,43 @@
+﻿@using Employee_Entity.ViewModels;
+@model IEnumerable<Employee>
+
+<a asp-action="EmployeeCreate" asp-controller="Employee" class="btn btn-primary btn-small mt-5">Add Employee</a>
+
+<table class="table table-hover mt-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Registration Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col"></th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+        {
+            int index = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@index</th>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.Department</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.RegistrationNumber</td>
+                    <td>@item.Gender</td>
+
+                    <td>
+                       <a class="btn btn-danger btn-xs" asp-action="EmployeeDelete" asp-controller="Employee"asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-secondary btn-xs" asp-action="EmployeeUpdate" asp-controller="Employee" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+    </tbody>
+
+</table>     
