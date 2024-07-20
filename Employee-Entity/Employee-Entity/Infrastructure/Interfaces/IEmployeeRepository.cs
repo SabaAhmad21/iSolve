@@ -13,6 +13,7 @@ namespace Employee_Entity.Infrastructure.Interfaces
         bool EmployeeDelete(int id);
 
         EmployeeUpdateVM EmployeeGetById(int Id);
+        EmployeeVM GetEmployeeById(int Id);
 
         bool EmployeeUpdate(EmployeeUpdateVM model);
     }

@@ -127,7 +127,27 @@ namespace Employee_Entity.Infrastructure.Implementation
                 return null;
             }
         }
-       
+
+        public EmployeeVM GetEmployeeById(int Id)
+        {
+
+            var employee = _context.Employees.Where(p => p.Id == Id).FirstOrDefault();
+            if (employee != null)
+            {
+                return new EmployeeVM
+                {
+                    EmployeeName = employee.EmployeeName,
+                    Department = employee.Department,
+                    PhoneNumber = employee.PhoneNumber,
+                    RegiastrationNumber = employee.RegistrationNumber                    
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public bool EmployeeUpdate(EmployeeUpdateVM model)
         {
             var employee= _context.Employees.Where(p => p.Id ==model.EmployeeId).FirstOrDefault();

@@ -20,7 +20,7 @@ namespace Employee_Entity.Controllers
             return View();
         }
 
-        [Route("Employees")]
+        //[Route("Employees")]
         public IActionResult Employees() 
         {
         return View(_employeeRepository.EmployeeGetAll());
